@@ -21,9 +21,30 @@ const TodoForm = () => {
       return <TodoItem key={i} todo={todo} />
     })
   }
+
+  const insertTodos = () => {
+    return <div className="Texteditor">
+      <form>
+
+          <div className="input-control">
+            <label htmlFor="name">Name</label>
+            <input id='id' name='name' type="text" placeholder='Enter Name'/>
+          </div>
+
+          <div className="input-control">
+            <label htmlFor="comment">Name</label>
+            <textarea id='comment' name='' cols="30" rows="5"></textarea>
+          </div>
+
+          <button className="submit-btn">Add Item</button>
+        
+      </form>
+    </div>
+  }
   
   return (
     <div>
+      {insertTodos()}
       {renderTodos()}
     </div>
   )
