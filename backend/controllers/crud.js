@@ -6,7 +6,8 @@ const getAllData = async (req, res) => {
 }
 
 const createData = async (req, res) => {
-    console.log('Create new data')
+    const crud = await CrudSchema.create(req.body);
+    res.status(201).json({crud})
 }
 
 const getOneItem = async (req, res) => {
