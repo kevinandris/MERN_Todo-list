@@ -1,3 +1,4 @@
+// ! child class - exported to TodoForm.js
 import React from 'react'
 
 const TodoItem = ({ todo}) => {
