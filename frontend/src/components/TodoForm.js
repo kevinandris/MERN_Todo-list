@@ -19,6 +19,8 @@ const TodoForm = () => {
     setTodos(data.data.crud)
   }
 
+  
+
   async function addTodos(e) {
     e.preventDefault();
 
@@ -35,7 +37,15 @@ const TodoForm = () => {
   }
 
   const renderTodos = () => {
-    return todos.map((todo, i) => {
+
+    // ! sort the newest todo item to be on the top of the list.
+    let sortedTodos = [...todos];
+    sortedTodos = sortedTodos.sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt)
+    })
+    // ! =================================
+    
+    return sortedTodos.map((todo, i) => {
       return <TodoItem key={i} todo={todo} getTodos={getTodos}/>
     })
   }

@@ -21,8 +21,9 @@ const AppStyled = styled.div`
   .content-container {
     background-color: #374954;
     width: 80%;
-    min-height: 80vh;
-    border-radius: 20px;
+    height: 80vh;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
     box-shadow: 10px 12px 20px rgba(0,0,0, .2);
 
     display: flex;
@@ -30,7 +31,23 @@ const AppStyled = styled.div`
     justify-content: center;
 
     overflow-y: scroll;
+    align-items: flex-start;
 
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    /* handle */
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(179.75def, #EB5757 -12.26%, #4F6877 55.88%);
+      border-radius: 10px;
+    }
+    
     form {
       input, textarea {
         width: 100%;

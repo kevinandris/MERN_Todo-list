@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
        background-color: #27AE60;
+       
     }
 
     input[type="text"]::-webkit-input-placeholder { // ! doesn't work
