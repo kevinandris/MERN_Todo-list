@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import TodoItem from './TodoItem';
+import { styled } from 'styled-components';
 
 const TodoForm = () => {
   const link = 'http://localhost:5000/api/v1/crud';
@@ -27,13 +28,11 @@ const TodoForm = () => {
       <form>
 
           <div className="input-control">
-            <label htmlFor="name">Name</label>
-            <input id='id' name='name' type="text" placeholder='Enter Name'/>
+            <input id='id' name='name' type="text" placeholder='Enter Name...'/>
           </div>
 
           <div className="input-control">
-            <label htmlFor="comment">Name</label>
-            <textarea id='comment' name='' cols="30" rows="5"></textarea>
+            <textarea id='comment' name='' cols="30" rows="5" placeholder='Task Name...'></textarea>
           </div>
 
           <button className="submit-btn">Add Item</button>
@@ -43,11 +42,38 @@ const TodoForm = () => {
   }
   
   return (
-    <div>
+    <TodoFormStyled>
       {insertTodos()}
       {renderTodos()}
-    </div>
+    </TodoFormStyled>
   )
 }
+
+const TodoFormStyled = styled.div`
+  width: 80%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .Texteditor {
+    width: 60%;
+
+    form {
+      padding-bottom: 5rem;
+      
+      .submit-btn {
+        padding: .5rem 1.5rem;
+        outline: none;
+        cursor: pointer;
+        background-color: #6BBE92;
+        border: none;
+        border-radius: 34px;
+        color: #fff;
+        filter: drop-shadow(0px 4px 28px rgba(0, 0, 0, 0.25));
+      }
+    }
+  }
+`
 
 export default TodoForm
