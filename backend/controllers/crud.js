@@ -1,6 +1,8 @@
+const CrudSchema = require('../models/crud')
+
 const getAllData = async (req, res) => {
-    // res.status(200).json('All the data is here')
-    const crud = await
+    const crud = await CrudSchema.find({})
+    res.status(200).json({crud})
 }
 
 const createData = async (req, res) => {
