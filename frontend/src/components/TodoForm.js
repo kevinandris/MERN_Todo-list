@@ -23,7 +23,9 @@ const TodoForm = () => {
   }
   
   return (
-    <div>TodoForm</div>
+    <div>
+      {renderTodos()}
+    </div>
   )
 }
 

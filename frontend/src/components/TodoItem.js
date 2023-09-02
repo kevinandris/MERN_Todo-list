@@ -1,8 +1,11 @@
 import React from 'react'
 
-const TodoItem = () => {
+const TodoItem = ({ todo}) => {
   return (
-    <div>TodoItem</div>
+    <div>
+        <h2>{todo.name}</h2>
+        <p>{todo.comment}</p>
+    </div>
   )
 }
 
