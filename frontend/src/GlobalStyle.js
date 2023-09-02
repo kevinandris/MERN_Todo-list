@@ -13,12 +13,12 @@ const GlobalStyle = createGlobalStyle`
        background-color: #27AE60;
     }
 
-    input[type="text"]::-webkit-input-placeholder {
+    input[type="text"]::-webkit-input-placeholder { // ! doesn't work
           color: #fff;
           opacity: .7;
     }
 
-    textarea::-webkit-input-placeholder {
+    textarea::-webkit-input-placeholder {  // ! doesn't work
           color: white;
           opacity: .7;
     }

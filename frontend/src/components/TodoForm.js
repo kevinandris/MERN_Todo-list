@@ -14,7 +14,7 @@ const TodoForm = () => {
     console.log(todos)
   }, [])
   
-  async function getTodos() {
+  async function getTodos() { // ! To show the data in the list.
     const data = await axios.get(link)
     setTodos(data.data.crud)
   }
@@ -31,25 +31,40 @@ const TodoForm = () => {
 
     setTodoName('');
     setTodoComment('');
+    getTodos(); // ! calling this function so we don't have to refresh the page anymore.
   }
 
   const renderTodos = () => {
     return todos.map((todo, i) => {
-      return <TodoItem key={i} todo={todo} />
+      return <TodoItem key={i} todo={todo} getTodos={getTodos}/>
     })
   }
-
 
   const insertTodos = () => {
     return <div className="Texteditor">
       <form onSubmit={addTodos}>
 
           <div className="input-control">
-            <input id='id' name='name' type="text" placeholder='Enter Name...'/>
+            <input  
+              id='id' 
+              name='name' 
+              type="text" 
+              placeholder='Enter Name...' 
+              value={todoName} 
+              onChange={(e) => setTodoName(e.target.value)}
+              required
+              />
           </div>
 
           <div className="input-control">
-            <textarea id='comment' name='' cols="30" rows="5" placeholder='Task Name...'></textarea>
+            <textarea 
+              id='comment' 
+              name='' 
+              cols="30" 
+              rows="5" 
+              placeholder='Task Name...' 
+              value={todoComment}
+              onChange={(e) => setTodoComment(e.target.value)}></textarea>
           </div>
 
           <button className="submit-btn">Add Item</button>

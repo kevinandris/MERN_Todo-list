@@ -4,34 +4,41 @@ import { styled } from 'styled-components'
 import document from '../img/document.svg'
 import edit from '../img/edit.svg'
 import deleteIcon from '../img/delete.svg'
+import axios from 'axios'
 
-const TodoItem = ({ todo}) => {
-  return (
-    <TodoItemStyled>
-        <div className="icon-document">
-            <img src={document} alt="" />
-        </div>
+const TodoItem = ({ todo, getTodos}) => {
 
-        <div className="text-con">
-            <div className="left-text">
-                <h3>Task Name</h3>
-                <p>{todo.name}</p>
+    const deleteTodo = async () => {
+        await axios.delete(`http://localhost:5000/api/v1/crud/${todo._id}`)
+        getTodos(); // ! calling this function so we don't have to refresh the page.
+    }
+
+    return (
+        <TodoItemStyled>
+            <div className="icon-document">
+                <img src={document} alt="" />
             </div>
-            <div className="right-text">
-                <h3>Comment</h3>
-                <p>{todo.comment}</p>
+
+            <div className="text-con">
+                <div className="left-text">
+                    <h3>Task Name</h3>
+                    <p>{todo.name}</p>
+                </div>
+                <div className="right-text">
+                    <h3>Comment</h3>
+                    <p>{todo.comment}</p>
+                </div>
             </div>
-        </div>
 
-        <div className="edit">
-            <img src={edit} alt="" />
-        </div>
+            <div className="edit">
+                <img src={edit} alt="" />
+            </div>
 
-        <div className="delete">
-            <img src={deleteIcon} alt="" />
-        </div>
-    </TodoItemStyled>
-  )
+            <div className="delete" onClick={deleteTodo}>
+                <img src={deleteIcon} alt="" />
+            </div>
+        </TodoItemStyled>
+    )
 }
 
 const TodoItemStyled = styled.div`
