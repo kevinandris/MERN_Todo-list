@@ -14,3 +14,6 @@
 #   Dependencies installed:
    1) FRONTEND: Styled-components, axios
    2) BACKEND: Express, mongoose, cors, dotenv, nodemon
+
+#   Things to improve:
+   1) I have to do some research on how to fix the webskit-scroll which it does not taking effect on my css code.
