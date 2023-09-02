@@ -36,8 +36,24 @@ const CrudSchema = require('../models/crud')
         }
     }
 
-    const updateAllData = async (req, res) => {
-        console.log('Update all the data')
+    const updateData = async (req, res) => {
+
+        try {
+            const { id:crudId } = req.params;
+            const curd = CrudSchema.findByIdAndUpdate({_id: crudId}, req.body, {
+                new: true,
+                runValidators: true
+            })
+    
+            if (!crud) {
+                return res.status(404).json({message: 'No Items with that ID'})
+            }
+    
+            res.status(200).json({crud})
+        } catch (error) {
+            res.status(500).json({message: error})
+            
+        }
     }
 
     const deleteAllData = async (req, res) => {
@@ -50,6 +66,6 @@ module.exports = {
     getAllData,
     createData,
     getOneItem, 
-    updateAllData,
+    updateData,
     deleteAllData
 }
