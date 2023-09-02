@@ -8,18 +8,28 @@ const TodoForm = () => {
   const [todos, setTodos] = useState([])
   const [todoName, setTodoName] = useState('')
   const [todoComment, setTodoComment] = useState('')
+  const [editTodoData, setEditTodoData] = useState(null)
 
   useEffect(() => {
     getTodos();
     console.log(todos)
   }, [])
+
+  useEffect(() => { // ! for editing
+    if (editTodoData) {
+      setTodoName(editTodoData.name ? editTodoData.name : '')
+      setTodoComment(editTodoData.name ? editTodoData.comment : '')
+    }
+  }, [editTodoData])
   
   async function getTodos() { // ! To show the data in the list.
     const data = await axios.get(link)
     setTodos(data.data.crud)
   }
 
-  
+  const editTodos = (todosData) => {
+    setEditTodoData(todosData);
+  }  
 
   async function addTodos(e) {
     e.preventDefault();
@@ -29,11 +39,16 @@ const TodoForm = () => {
       comment: todoComment ? todoComment : undefined
     }
 
-    await axios.post(link, todoData)
+    if (!editTodoData) { // ! only post if editTodoData is not provided
+      await axios.post(link, todoData)
+    } else {
+      await axios.patch(`http://localhost:5000/api/v1/crud/${editTodoData._id}`, todoData) // ! Update the data if we do have the editTodoData
+    }
 
     setTodoName('');
     setTodoComment('');
     getTodos(); // ! calling this function so we don't have to refresh the page anymore.
+    setEditTodoData('')
   }
 
   const renderTodos = () => {
@@ -46,7 +61,7 @@ const TodoForm = () => {
     // ! =================================
     
     return sortedTodos.map((todo, i) => {
-      return <TodoItem key={i} todo={todo} getTodos={getTodos}/>
+      return <TodoItem key={i} todo={todo} getTodos={getTodos} editTodos={editTodos}/>
     })
   }
 

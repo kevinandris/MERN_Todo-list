@@ -33,17 +33,17 @@ const AppStyled = styled.div`
     overflow-y: scroll;
     align-items: flex-start;
 
-    ::-webkit-scrollbar {
+    body::-webkit-scrollbar {
       width: 8px;
     }
 
     /* Track */
-    ::-webkit-scrollbar-track {
+    body::-webkit-scrollbar-track {
       border-radius: 10px;
     }
 
     /* handle */
-    ::-webkit-scrollbar-thumb {
+    body::-webkit-scrollbar-thumb {
       background: linear-gradient(179.75def, #EB5757 -12.26%, #4F6877 55.88%);
       border-radius: 10px;
     }

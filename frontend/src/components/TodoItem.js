@@ -6,7 +6,7 @@ import edit from '../img/edit.svg'
 import deleteIcon from '../img/delete.svg'
 import axios from 'axios'
 
-const TodoItem = ({ todo, getTodos}) => {
+const TodoItem = ({ todo, getTodos, editTodos}) => {
 
     const deleteTodo = async () => {
         await axios.delete(`http://localhost:5000/api/v1/crud/${todo._id}`)
@@ -30,7 +30,7 @@ const TodoItem = ({ todo, getTodos}) => {
                 </div>
             </div>
 
-            <div className="edit">
+            <div className="edit" onClick={() => editTodos(todo)}>
                 <img src={edit} alt="" />
             </div>
 
