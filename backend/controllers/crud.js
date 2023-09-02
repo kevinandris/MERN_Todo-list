@@ -1,26 +1,50 @@
 const CrudSchema = require('../models/crud')
 
-const getAllData = async (req, res) => {
-    const crud = await CrudSchema.find({})
-    res.status(200).json({crud})
-}
+    const getAllData = async (req, res) => {
 
-const createData = async (req, res) => {
-    const crud = await CrudSchema.create(req.body);
-    res.status(201).json({crud})
-}
+        try {
+            const crud = await CrudSchema.find({})
+            res.status(200).json({crud})
+        } catch (error) {
+            res.status(500).json({message: error})
+        }
+    }
 
-const getOneItem = async (req, res) => {
-    console.log('Get one item')
-}
+    const createData = async (req, res) => {
+        try {
+            const crud = await CrudSchema.create(req.body);
+            res.status(201).json({crud})
+        } catch (error) {
+            res.status(500).json({message: error})
+        }
+    }
 
-const updateAllData = async (req, res) => {
-    console.log('Update all the data')
-}
+    const getOneItem = async (req, res) => {
 
-const deleteAllData = async (req, res) => {
-    console.log('Delete all the data')
-}
+        try {
+            
+            const { id:crudId } = req.params;
+            const crud = await CrudSchema.findOne({_id:crudId});
+    
+            if (!crud) {
+                return res.status(404).json({message: 'The item does not exist!'})
+            }
+    
+            res.status(200).json({crud})
+        } catch (error) {
+            res.status(500).json({message: error})
+        }
+    }
+
+    const updateAllData = async (req, res) => {
+        console.log('Update all the data')
+    }
+
+    const deleteAllData = async (req, res) => {
+        console.log('Delete all the data')
+    }
+
+
 
 module.exports = {
     getAllData,
