@@ -48,8 +48,9 @@ const CrudSchema = require('../models/crud')
             if (!crud) {
                 return res.status(404).json({message: 'No Items with that ID'})
             }
-    
+            
             res.status(200).json({crud})
+    
         } catch (error) {
             res.status(500).json({message: error})
             
@@ -60,6 +61,12 @@ const CrudSchema = require('../models/crud')
         try {
             const { id:crudId } = req.params;
             const crud = await CrudSchema.findByIdAndDelete({_id: crudId})
+
+            if (!crud) {
+                return res.status(404).json({message: 'No Items with that ID'})
+            }
+
+            res.status(200).json({crud})
         } catch (error) {
             res.status(500).json({message: error})
         }
