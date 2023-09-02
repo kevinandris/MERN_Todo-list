@@ -1,7 +1,7 @@
 #  Project description:
    1) A modern looking to do list that allows users to do the CRUD operation.
    2) This is a MERN project
-   3) 2 functions implemented which are the edit and delete functions.
+   3) Two functions implemented which are the edit and delete functions.
 
 #  Project image:
 ![image](https://github.com/kevinandris/MERN_Todo-list/assets/102328858/573f8ea6-6d21-4531-973a-ccbbf9821346)
@@ -10,3 +10,7 @@
 #  To run this project:
    1) FRONTEND: On Visual Studio Code, type npm start.
    2) BACKEND: On Visual Studio Code, type npm start.
+
+#   Dependencies installed:
+   1) FRONTEND: Styled-components, axios
+   2) BACKEND: Express, mongoose, cors, dotenv, nodemon
