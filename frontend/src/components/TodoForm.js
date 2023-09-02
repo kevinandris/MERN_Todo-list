@@ -58,10 +58,11 @@ const TodoFormStyled = styled.div`
 
   .Texteditor {
     width: 60%;
+    padding-top: 4rem;
 
     form {
       padding-bottom: 5rem;
-      
+
       .submit-btn {
         padding: .5rem 1.5rem;
         outline: none;

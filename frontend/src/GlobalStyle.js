@@ -15,10 +15,12 @@ const GlobalStyle = createGlobalStyle`
 
     input[type="text"]::-webkit-input-placeholder {
           color: #fff;
+          opacity: .7;
     }
 
     textarea::-webkit-input-placeholder {
           color: white;
+          opacity: .7;
     }
 `
 
