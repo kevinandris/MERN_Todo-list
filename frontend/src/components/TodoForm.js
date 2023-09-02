@@ -6,6 +6,8 @@ import { styled } from 'styled-components';
 const TodoForm = () => {
   const link = 'http://localhost:5000/api/v1/crud';
   const [todos, setTodos] = useState([])
+  const [todoName, setTodoName] = useState('')
+  const [todoComment, setTodoComment] = useState('')
 
   useEffect(() => {
     getTodos();
@@ -17,15 +19,30 @@ const TodoForm = () => {
     setTodos(data.data.crud)
   }
 
+  async function addTodos(e) {
+    e.preventDefault();
+
+    const todoData = {
+      name: todoName ? todoName : undefined,
+      comment: todoComment ? todoComment : undefined
+    }
+
+    await axios.post(link, todoData)
+
+    setTodoName('');
+    setTodoComment('');
+  }
+
   const renderTodos = () => {
     return todos.map((todo, i) => {
       return <TodoItem key={i} todo={todo} />
     })
   }
 
+
   const insertTodos = () => {
     return <div className="Texteditor">
-      <form>
+      <form onSubmit={addTodos}>
 
           <div className="input-control">
             <input id='id' name='name' type="text" placeholder='Enter Name...'/>
