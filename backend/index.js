@@ -7,7 +7,6 @@ require('dotenv').config()
 const app = express()
 const port = 5000;
 
-
 // ! Middleware
 app.use(express.json())
 
