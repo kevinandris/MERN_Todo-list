@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router()
 
-const { getAllData, createData, getOneItem, updateData, deleteAllData } = require('../controllers/crud')
+const { getAllData, createData, getOneItem, updateData, deleteData } = require('../controllers/crud')
 
 router.route('/').get(getAllData).post(createData);
-router.route('/:id').get(getOneItem)
+router.route('/:id').get(getOneItem).patch(updateData).delete(deleteData)
 
 module.exports = router;

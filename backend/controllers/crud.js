@@ -40,7 +40,7 @@ const CrudSchema = require('../models/crud')
 
         try {
             const { id:crudId } = req.params;
-            const curd = CrudSchema.findByIdAndUpdate({_id: crudId}, req.body, {
+            const crud = await CrudSchema.findByIdAndUpdate({_id: crudId}, req.body, {
                 new: true,
                 runValidators: true
             })
@@ -56,16 +56,19 @@ const CrudSchema = require('../models/crud')
         }
     }
 
-    const deleteAllData = async (req, res) => {
-        console.log('Delete all the data')
+    const deleteData = async (req, res) => {
+        try {
+            const { id:crudId } = req.params;
+            const crud = await CrudSchema.findByIdAndDelete({_id: crudId})
+        } catch (error) {
+            res.status(500).json({message: error})
+        }
     }
-
-
 
 module.exports = {
     getAllData,
     createData,
     getOneItem, 
     updateData,
-    deleteAllData
+    deleteData
 }
