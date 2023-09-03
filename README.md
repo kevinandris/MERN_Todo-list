@@ -19,4 +19,4 @@
     2) BACKEND: Express, mongoose, cors, dotenv, nodemon
 
 #   Things to improve:
-    1) I have to do some research on how to fix the webskit-scroll which it does not taking effect on my css code.
+    1) I have to do some research on how to fix the webskit-scroll for better-looking scroll which at the moment, it does not taking effect on my css file.
