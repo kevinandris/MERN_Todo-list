@@ -11,8 +11,8 @@
 ![image](https://github.com/kevinandris/MERN_Todo-list/assets/102328858/bb7ceea9-18ea-465e-b235-26a29797e074)
 
 #   To run this project:
-    1) FRONTEND: On Visual Studio Code, type npm start.
-    2) BACKEND: On Visual Studio Code, type npm start.
+    1) FRONTEND directory: On Visual Studio Code, type npm start.
+    2) BACKEND directory: On Visual Studio Code, type npm start.
 
 #   Dependencies installed:
     1) FRONTEND: Styled-components, axios
